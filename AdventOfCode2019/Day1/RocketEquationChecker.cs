@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Xunit;
 
-namespace AdventOfCode2019.Tests.Day1
+namespace AdventOfCode2019.Day1
 {
-    class RocketEquationChecker
+    public class RocketEquationChecker
     {
         public int GetTotalFuelRequirement(List<int> data)
         {

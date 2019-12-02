@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AdventOfCode2019.Day1;
 using Xunit;
 
 namespace AdventOfCode2019.Tests.Day1
