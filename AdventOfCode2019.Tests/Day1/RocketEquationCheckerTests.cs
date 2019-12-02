@@ -20,5 +20,13 @@ namespace AdventOfCode2019.Tests.Day1
             Assert.Equal(expectedResult, result);
         }
 
+
+        [Theory]
+        [JsonFileData("Day1/testData.json", "Part2", typeof(List<int>), typeof(int))]
+        public void GetTotalFuelRequirementWhenFuelHasMassReturnCorrectTotalFuelRequirement(List<int> data, int expectedResult)
+        {
+            var result = _rocketEquationChecker.GetTotalFuelRequirementWhenFuelHasMass(data);
+            Assert.Equal(expectedResult, result);
+        }
     }
 }

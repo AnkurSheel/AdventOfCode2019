@@ -5,7 +5,7 @@ using Xunit;
 
 namespace AdventOfCode2019.Tests.Day1
 {
-    class TheTyrannyOfTheRocketEquation
+    class RocketEquationChecker
     {
         public int GetTotalFuelRequirement(List<int> data)
         {
@@ -16,6 +16,11 @@ namespace AdventOfCode2019.Tests.Day1
                 totalFuelRequirement += fuelRequiredForModule;
             }
             return totalFuelRequirement;
+        }
+
+        public int GetTotalFuelRequirementWhenFuelHasMass(List<int> data)
+        {
+            return 0;
         }
     }
 }
