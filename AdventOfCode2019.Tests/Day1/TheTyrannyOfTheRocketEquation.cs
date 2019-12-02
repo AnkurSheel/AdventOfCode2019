@@ -9,7 +9,13 @@ namespace AdventOfCode2019.Tests.Day1
     {
         public int GetTotalFuelRequirement(List<int> data)
         {
-            return 0;
+            var totalFuelRequirement = 0;
+            foreach (var moduleMass in data)
+            {
+                var fuelRequiredForModule = (moduleMass / 3) - 2;
+                totalFuelRequirement += fuelRequiredForModule;
+            }
+            return totalFuelRequirement;
         }
     }
 }
