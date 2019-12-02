@@ -3,21 +3,22 @@ using Xunit;
 
 namespace AdventOfCode2019.Tests.Day1
 {
-    public class TheTyrannyOfTheRocketEquationTest
+    public class RocketEquationCheckerTests
     {
-        private TheTyrannyOfTheRocketEquation _theTyrannyOfTheRocketEquation;
+        private readonly RocketEquationChecker _rocketEquationChecker;
 
-        public TheTyrannyOfTheRocketEquationTest()
+        public RocketEquationCheckerTests()
         {
-            _theTyrannyOfTheRocketEquation = new TheTyrannyOfTheRocketEquation();
+            _rocketEquationChecker = new RocketEquationChecker();
         }
 
         [Theory]
         [JsonFileData("Day1/testData.json", "Part1", typeof(List<int>), typeof(int))]
         public void GetTotalFuelRequirementReturnCorrectTotalFuelRequirement(List<int> data, int expectedResult)
         {
-            var result = _theTyrannyOfTheRocketEquation.GetTotalFuelRequirement(data);
+            var result = _rocketEquationChecker.GetTotalFuelRequirement(data);
             Assert.Equal(expectedResult, result);
         }
+
     }
 }
