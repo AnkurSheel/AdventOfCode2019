@@ -41,5 +41,14 @@ namespace AdventOfCode2019.Day2
 
             return (int)integers[0];
         }
+
+        public int CompleteAssistForMoon(string data)
+        {
+            var noun = 0;
+            var verb = 0;
+            var requiredOutput = 19690720;
+
+            return 100 * noun + verb;
+        }
     }
 }
