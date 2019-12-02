@@ -12,7 +12,7 @@ namespace AdventOfCode2019.Tests.Day1
             var totalFuelRequirement = 0;
             foreach (var moduleMass in data)
             {
-                var fuelRequiredForModule = (moduleMass / 3) - 2;
+                var fuelRequiredForModule = GetFuelRequiredForModule(moduleMass);
                 totalFuelRequirement += fuelRequiredForModule;
             }
             return totalFuelRequirement;
@@ -20,7 +20,29 @@ namespace AdventOfCode2019.Tests.Day1
 
         public int GetTotalFuelRequirementWhenFuelHasMass(List<int> data)
         {
-            return 0;
+            var totalFuelRequirement = 0;
+            foreach (var moduleMass in data)
+            {
+                var mass = moduleMass;
+                var fuelRequiredForModule = 0;
+                var totalFuelRequiredForModule = 0;
+                do
+                {
+                    fuelRequiredForModule = GetFuelRequiredForModule(mass);
+                    totalFuelRequiredForModule += fuelRequiredForModule;
+                    mass = fuelRequiredForModule;
+                } while (fuelRequiredForModule > 0);
+
+                GetFuelRequiredForModule(moduleMass);
+                totalFuelRequirement += totalFuelRequiredForModule;
+            }
+            return totalFuelRequirement;
         }
+        private int GetFuelRequiredForModule(int moduleMass)
+        {
+            var fuelRequiredForModule = Math.Max(0, (moduleMass / 3) - 2);
+            return fuelRequiredForModule;
+        }
+
     }
 }
