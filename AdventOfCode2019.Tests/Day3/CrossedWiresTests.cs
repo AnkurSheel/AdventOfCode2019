@@ -15,9 +15,17 @@ namespace AdventOfCode2019.Tests.Day3
 
         [Theory]
         [JsonFileData("Day3/testData.json", "Part1", typeof(List<string>), typeof(int))]
-        public void RestoreReturnCorrectCode(List<string> data, int expectedResult)
+        public void GetDistanceToClosestIntersectionReturnsBestDistance(List<string> data, int expectedResult)
         {
             var result = _crossedWires.GetDistanceToClosestIntersection(data);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Theory]
+        [JsonFileData("Day3/testData.json", "Part2", typeof(List<string>), typeof(int))]
+        public void GetMinimumNumberOfStepsToIntersectionReturnsMinimumSteps(List<string> data, int expectedResult)
+        {
+            var result = _crossedWires.GetMinimumNumberOfStepsToIntersection(data);
             Assert.Equal(expectedResult, result);
         }
     }

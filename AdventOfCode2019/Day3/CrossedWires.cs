@@ -84,5 +84,10 @@ namespace AdventOfCode2019.Day3
                 }
             }
         }
+
+        public int GetMinimumNumberOfStepsToIntersection(List<string> data)
+        {
+            return 0;
+        }
     }
 }
