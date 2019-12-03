@@ -20,35 +20,20 @@ namespace AdventOfCode2019.Day3
             var wire1 = data[1];
             var wire2 = data[2];
 
-            _grid = new int[dimension * 2 , dimension * 2];
+            _grid = new int[dimension * 2, dimension * 2];
 
             _center.X = dimension;
             _center.Y = dimension;
 
-            var intersections = new List<Coordinate>();
-            MarkWireOnGrid(wire1, (x, y) => _grid[x, y] = 1);
-            MarkWireOnGrid(wire2, (x, y) =>
-            {
-                if (_grid[x, y] == 1)
-                {
-                    _grid[x, y] = 3;
-                    intersections.Add(new Coordinate {X = x, Y = y});
-                }
-
-                _grid[x, y] = 2;
-            });
-            int bestDistance = Int32.MaxValue;
-            foreach (var intersection in intersections)
-            {
-                var distance = Math.Abs(intersection.Y - _center.Y) + Math.Abs(intersection.X - _center.X);
-                if (distance < bestDistance)
-                {
-                    bestDistance = distance;
-                }
-            }
-
+            var intersections = GetIntersections(wire1, wire2);
+            var bestDistance = GetBestDistance(intersections);
 
             return bestDistance;
+        }
+
+        public int GetMinimumNumberOfStepsToIntersection(List<string> data)
+        {
+            return 0;
         }
 
         private void MarkWireOnGrid(string wire, Action<int, int> callback)
@@ -85,9 +70,37 @@ namespace AdventOfCode2019.Day3
             }
         }
 
-        public int GetMinimumNumberOfStepsToIntersection(List<string> data)
+        private List<Coordinate> GetIntersections(string wire1, string wire2)
         {
-            return 0;
+            var intersections = new List<Coordinate>();
+            MarkWireOnGrid(wire1, (x, y) => _grid[x, y] = 1);
+            MarkWireOnGrid(wire2, (x, y) =>
+            {
+                if (_grid[x, y] == 1)
+                {
+                    _grid[x, y] = 3;
+                    intersections.Add(new Coordinate { X = x, Y = y });
+                }
+
+                _grid[x, y] = 2;
+            });
+            return intersections;
+        }
+
+
+        private int GetBestDistance(List<Coordinate> intersections)
+        {
+            int bestDistance = Int32.MaxValue;
+            foreach (var intersection in intersections)
+            {
+                var distance = Math.Abs(intersection.Y - _center.Y) + Math.Abs(intersection.X - _center.X);
+                if (distance < bestDistance)
+                {
+                    bestDistance = distance;
+                }
+            }
+
+            return bestDistance;
         }
     }
 }
