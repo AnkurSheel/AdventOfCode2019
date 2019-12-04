@@ -28,6 +28,10 @@
             }
 
             return numberOfPasswords;
+
+        public int GetNumberOfPasswordsAdditionalCriteria(PasswordRange data)
+        {
+            return 0;
         }
 
         private bool MeetsCriteria(int currentNumber)

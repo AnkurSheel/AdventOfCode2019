@@ -14,9 +14,17 @@ namespace AdventOfCode2019.Tests.Day4
 
         [Theory]
         [JsonFileData("Day4/testData.json", "Part1", typeof(PasswordRange), typeof(int))]
-        public void GetDistanceToClosestIntersectionReturnsBestDistance(PasswordRange data, int expectedResult)
+        public void GetNumberOfPasswordsReturnsCorrectNumber(PasswordRange data, int expectedResult)
         {
             var result = _secureContainer.GetNumberOfPasswords(data);
+            Assert.Equal(expectedResult, result);
+        }
+
+        [Theory]
+        [JsonFileData("Day4/testData.json", "Part2", typeof(PasswordRange), typeof(int))]
+        public void GetNumberOfPasswordsAdditionalCriteriaReturnsCorrectNumber(PasswordRange data, int expectedResult)
+        {
+            var result = _secureContainer.GetNumberOfPasswordsAdditionalCriteria(data);
             Assert.Equal(expectedResult, result);
         }
     }
